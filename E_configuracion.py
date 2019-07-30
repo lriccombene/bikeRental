@@ -1,7 +1,7 @@
 class configuracion(object):
     def config(self):
         cadena = 'postgresql://postgres:slam2016@localhost:5432/bikeRental'
-        # cadena = 'postgresql://vsoftcoo_slam2016:Slamcoop2016@postgres.cicuxlbsejat.us-east-2.rds.amazonaws.com:5432/sgc'
+        
         return cadena
 
     # lugar donde se descargan archivos local
