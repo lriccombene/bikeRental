@@ -1,0 +1,11 @@
+# Contexto
+Una empresa alquila bicicletas bajo las siguientes opciones:
+1. Alquiler por hora, cobrando $ 5 por hora
+2. Alquiler por día, cobrando $ 20 por día
+3. Alquiler por semana, cambiando $ 60 por semana
+4. Family Rental, es una promoción que puede incluir de 3 a 5 alquileres (de cualquier tipo) con un descuento
+del 30% del precio total
+5. Los valores podrían cambiar en el futuro si el cliente decide en cualquier momento
+6: Implementar un modelo de persistencia para la información de alquileres
+7. Implemente un tipo de modelo de cola de mensajes para enviar y recibir la información de las rentas que crea el usuario
+8. En el momento del proyecto, no se han definido proveedores de persistencia de datos ni de intercambio de mensajes

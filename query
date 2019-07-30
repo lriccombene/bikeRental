@@ -1,0 +1,25 @@
+To create a new database:
+
+CREATE DATABASE bikeRental;
+
+
+To create a new table "product":
+
+CREATE TABLE public.product
+(
+  id_product integer NOT NULL DEFAULT nextval('product_id_product_seq'::regclass),
+  name character varying,
+  description character varying,
+  category character varying,
+  value numeric,
+  CONSTRAINT "PK_id_product" PRIMARY KEY (id_product)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.product
+  OWNER TO postgres;
+
+
+
+  
