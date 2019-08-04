@@ -1,3 +1,12 @@
+
+'''
+Este archivo contiene los query que se deben ejecutar para crear la db ,  
+las tablas y sus relaciones que se utilizar 
+
+This file contains the queries that must be executed to create the db,
+ the tables and their relationships to be used.
+'''
+
 To create a new database:
 
 CREATE DATABASE bikeRental;
@@ -5,9 +14,9 @@ CREATE DATABASE bikeRental;
 
 To create a new table "product":
 
-CREATE TABLE public.product
+CREATE TABLE product
 (
-  id_product integer NOT NULL DEFAULT nextval('product_id_product_seq'::regclass),
+  id_product serial NOT NULL,
   name character varying,
   description character varying,
   category character varying,
@@ -17,9 +26,126 @@ CREATE TABLE public.product
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE public.product
+ALTER TABLE product
   OWNER TO postgres;
 
+
+CREATE TABLE promotion
+(
+  id_promotion serial NOT NULL,
+  id_product integer,
+  item_min integer,
+  item_max integer,
+  discount integer,
+  CONSTRAINT pk_id_promotion PRIMARY KEY (id_promotion),
+  CONSTRAINT "FK_id_product" FOREIGN KEY (id_product)
+      REFERENCES product (id_product) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE promotion
+'''
+Este archivo contiene los query que se deben ejecutar para crear la db ,  
+las tablas y sus relaciones que se utilizar 
+
+This file contains the queries that must be executed to create the db,
+ the tables and their relationships to be used.
+'''
+
+To create a new database:
+
+CREATE DATABASE bikeRental;
+
+
+To create a new table "product":
+
+CREATE TABLE product
+(
+  id_product serial NOT NULL,
+  name character varying,
+  description character varying,
+  category character varying,
+  value numeric,
+  CONSTRAINT "PK_id_product" PRIMARY KEY (id_product)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE product
+  OWNER TO postgres;
+
+
+CREATE TABLE promotion
+(
+  id_promotion serial NOT NULL,
+  id_product integer,
+  item_min integer,
+  item_max integer,
+  discount integer,
+  CONSTRAINT pk_id_promotion PRIMARY KEY (id_promotion),
+  CONSTRAINT "FK_id_product" FOREIGN KEY (id_product)
+      REFERENCES product (id_product) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE promotion
+  OWNER TO postgres;
+
+-- Index: "FKI_id_product"
+
+-- DROP INDEX "FKI_id_product";
+
+CREATE INDEX "FKI_id_product"
+  ON promotion
+  USING btree
+  (id_product);
+
+
+
+CREATE TABLE detail_promotion
+(
+  id_detail_promotion serial NOT NULL,
+  id_product integer,
+  id_promotion integer,
+  CONSTRAINT pk_id_detail_promotion PRIMARY KEY (id_detail_promotion)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE detail_promotion
+  OWNER TO postgres;
+
+
+  
+  OWNER TO postgres;
+
+-- Index: "FKI_id_product"
+
+-- DROP INDEX "FKI_id_product";
+
+CREATE INDEX "FKI_id_product"
+  ON promotion
+  USING btree
+  (id_product);
+
+
+
+CREATE TABLE detail_promotion
+(
+  id_detail_promotion serial NOT NULL,
+  id_product integer,
+  id_promotion integer,
+  CONSTRAINT pk_id_detail_promotion PRIMARY KEY (id_detail_promotion)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE detail_promotion
+  OWNER TO postgres;
 
 
   
